@@ -1702,7 +1702,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #447fff;
+  background: #b49655;
 }
 .feed-link,
 .chat {
@@ -2693,7 +2693,6 @@ ul.breadcrumb li+li:last-child {
 }
 .links-of-author-item {
   margin: 5px 0 0;
-  width: 50%;
 }
 .links-of-author-item a,
 .links-of-author-item span.exturl {
@@ -2746,9 +2745,7 @@ ul.breadcrumb li+li:last-child {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   margin: 5px 0 0;
-  width: 50%;
   display: inline-block;
-  width: unset;
 }
 .links-of-blogroll-inline .links-of-blogroll-item a,
 .links-of-blogroll-inline .links-of-blogroll-item span.exturl {
@@ -2761,4 +2758,17 @@ ul.breadcrumb li+li:last-child {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+body {
+  background: url("/images/350.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+sidebar {
+  background: url("/images/351.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
