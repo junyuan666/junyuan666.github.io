@@ -103,7 +103,7 @@
 
 
   <meta name="description" content="从今天下午一直到晚上八点半，我绞尽脑汁，费尽千辛万苦，终于成功实现在博客中加入背景图片。期间查过不少资料，也翻了不少评论区，主要由于我使用的主题next版本是7.2，在自定义style上面较以前版本而言有着很大差别。不过最终还是在GitHub一位评论区的小哥留下的线索下找到方法">
-<meta name="keywords" content="博客搭建,背景图片">
+<meta name="keywords" content="背景图片,博客搭建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实现加入背景图片">
 <meta property="og:url" content="http://junyuan666.github.io/2019/07/15/实现加入背景图片/index.html">
@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://junyuan666.github.io/2019/07/15/实现加入背景图片/blog.PNG">
 <meta property="og:image" content="http://junyuan666.github.io/2019/07/15/实现加入背景图片/2.PNG">
 <meta property="og:image" content="http://junyuan666.github.io/2019/07/15/实现加入背景图片/1.PNG">
-<meta property="og:updated_time" content="2019-07-15T13:45:27.213Z">
+<meta property="og:updated_time" content="2019-07-15T14:09:52.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现加入背景图片">
 <meta name="twitter:description" content="从今天下午一直到晚上八点半，我绞尽脑汁，费尽千辛万苦，终于成功实现在博客中加入背景图片。期间查过不少资料，也翻了不少评论区，主要由于我使用的主题next版本是7.2，在自定义style上面较以前版本而言有着很大差别。不过最终还是在GitHub一位评论区的小哥留下的线索下找到方法">
@@ -402,7 +402,7 @@
                 
               
 
-              <time title="创建时间：2019-07-15 20:18:42 / 修改时间：21:45:27" itemprop="dateCreated datePublished" datetime="2019-07-15T20:18:42+08:00">2019-07-15</time>
+              <time title="创建时间：2019-07-15 20:18:42 / 修改时间：22:09:52" itemprop="dateCreated datePublished" datetime="2019-07-15T20:18:42+08:00">2019-07-15</time>
             </span>
           
 
@@ -479,19 +479,18 @@
 <p>先上效果图</p>
 <p><img src="//junyuan666.github.io/2019/07/15/实现加入背景图片/blog.PNG" alt="有了背景的博客"></p>
 <p>至于实现这个功能的方法，主要是由于在7.2版本下，next官方更新了自定义custom styles的渠道，导致<code>next/source/css下的_custom</code>路径已经不再有，<code>css</code>下面的配置文件<code>main.styl</code>也已经改写，如果自己再创建路径的话就没有丝毫的作用，博客界面还是会一片空白</p>
-<p>至于新的解决办法就是来自于GitHub平台上以为小哥的评论：</p>
+<p>至于新的解决办法就是来自于GitHub平台上这位小哥的评论：</p>
 <blockquote>
 <p> 现在自定义CSS的方法：在<code>_config.yml</code>或<code>next.yml</code>中设置：(某些next安装的时候会把配置文件名<code>_config.yml</code>改为<code>next.yml</code>，酌情而定)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">      style: source/_data/styles.styl</span><br></pre></td></tr></table></figure>
 </blockquote>
-<blockquote>
-<p> 然后，将自定义CSS放进<code>source/_data/styles.styl</code>中即可</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">        style: source/_data/styles.styl</span><br></pre></td></tr></table></figure>
+
+<p>然后，将自定义CSS放进<code>source/_data/styles.styl</code>中即可</p>
 <p>所以最后解决的办法就是在<strong>blog的根目录</strong>下面的source文件夹里面的_data文件夹（如果没有就自己创建）里面打开<code>styles.styl</code>（没有的话也自己创建）然后输入以下代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//背景图片</span><br><span class="line">body&#123;   </span><br><span class="line">        background:url(图片链接);</span><br><span class="line">        background-size:cover;</span><br><span class="line">        background-repeat:no-repeat;</span><br><span class="line">        background-attachment:fixed;</span><br><span class="line">        background-position:center;</span><br><span class="line">&#125;</span><br><span class="line">//顶栏图片</span><br><span class="line">.header &#123;</span><br><span class="line">          background:url(图片链接) none repeat scroll !important;</span><br><span class="line">&#125;</span><br><span class="line">//底栏背景色</span><br><span class="line">.footer &#123;</span><br><span class="line">          background:rgba(颜色rgb,透明度) none repeat scroll !important;</span><br><span class="line">&#125;</span><br><span class="line">//侧栏图片及内部文字颜色修改</span><br><span class="line">#sidebar &#123;</span><br><span class="line">            background:url(图片链接);</span><br><span class="line">            background-size: cover;</span><br><span class="line">            background-position:center;</span><br><span class="line">            background-repeat:no-repeat;</span><br><span class="line">            p,span,a &#123;color: 颜色代码;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>所有的相关配置都可以自己更改</p>
-<p><strong><em>ps</em></strong> : 在GitHub平台上其实是有一段对话的，有一位小哥提出了这个问题，下面就有了一位小哥解答，但是提问的小哥貌似还没搞定，原因在于他没有搞清楚source文件夹的路径，误认为是next下的source文件夹<br><img src="//junyuan666.github.io/2019/07/15/实现加入背景图片/2.PNG" alt="两位小哥的对话"><br>如果真的是按照在next下面的source文件夹来操作的话，Git就会报错，像下面这样：<br><img src="//junyuan666.github.io/2019/07/15/实现加入背景图片/1.PNG" alt="一大串什么都不懂的错误代码"><br><del>不要问我为什么知道，其实我刚开始也搞错了……</del><br>所以一定要注意source文件夹的路径，搞定了路径之后就基本上万事大吉。</p>
+<p><strong><em>ps</em></strong> : 在GitHub平台上其实是有一段对话的，有一位小哥提出了这个问题，下面就有了这位小哥解答，但是提问的小哥貌似还没搞定，原因在于他没有搞清楚source文件夹的路径，误认为是next下的source文件夹<br><img src="//junyuan666.github.io/2019/07/15/实现加入背景图片/2.PNG" alt="两位小哥的对话"><br>如果真的是按照在next下面的source文件夹来操作的话，Git就会报错，像下面这样：<br><img src="//junyuan666.github.io/2019/07/15/实现加入背景图片/1.PNG" alt="一大串什么都不懂的错误代码"><br><del>不要问我为什么知道，其实我刚开始也搞错了……</del><br>所以一定要注意source文件夹的路径，搞定了路径之后就基本上万事大吉。</p>
 
       
     </div>
@@ -522,9 +521,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/博客搭建/" rel="tag"># 博客搭建</a>
-          
             <a href="/tags/背景图片/" rel="tag"># 背景图片</a>
+          
+            <a href="/tags/博客搭建/" rel="tag"># 博客搭建</a>
           
         </div>
       
